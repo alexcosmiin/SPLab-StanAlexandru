@@ -6,7 +6,7 @@ public class Book {
     private String title;
     private Author author;
     private List<Chapter> chapters;
-
+    private TableOfContents toc;
 
     // constructor
     public Book(String title, Author author) {
@@ -20,11 +20,19 @@ public class Book {
         chapters.add(chapter);
     }
 
-    //metoda print()
+    // metoda pentru a seta TableOfContents
+    public void setTableOfContents(TableOfContents toc) {
+        this.toc = toc;
+    }
+
+    // metoda print()
     public void print() {
         System.out.println("Book: " + title);
         if (author != null) {
             author.print();
+        }
+        if (toc != null) {
+            toc.print(); 
         }
         for (Chapter chapter : chapters) {
             chapter.print();
@@ -46,5 +54,9 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public TableOfContents getTableOfContents() {
+        return toc;
     }
 }
