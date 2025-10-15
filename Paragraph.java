@@ -1,19 +1,28 @@
 public class Paragraph {
-
-    //atribute
+    // atribute
     private String text;
+    private AlignStrategy alignStrategy;
 
-    //constructor
+    // constructor
     public Paragraph(String text) {
         this.text = text;
     }
 
-    //metoda print()
+    // metoda print
     public void print() {
-        System.out.println("        Paragraph: " + text);
+        if (alignStrategy == null) {
+            System.out.println("        Paragraph: " + text);
+        } else {
+            alignStrategy.render(text);
+        }
     }
 
-    // Getter si Setter
+    // setam strategia
+    public void setAlignStrategy(AlignStrategy alignStrategy) {
+        this.alignStrategy = alignStrategy;
+    }
+
+    // getter si setter pentru text
     public String getText() {
         return text;
     }
