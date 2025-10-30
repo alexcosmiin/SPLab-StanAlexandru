@@ -2,61 +2,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
-    // atribute
     private String title;
     private Author author;
     private List<Chapter> chapters;
     private TableOfContents toc;
 
-    // constructor
     public Book(String title, Author author) {
         this.title = title;
         this.author = author;
         this.chapters = new ArrayList<>();
     }
 
-    // metoda pentru a adauga un capitol
     public void addChapter(Chapter chapter) {
         chapters.add(chapter);
     }
 
-    // metoda pentru a seta TableOfContents
     public void setTableOfContents(TableOfContents toc) {
         this.toc = toc;
     }
 
-    // metoda print()
+    public void generateTOC() {
+        StringBuilder sb = new StringBuilder();
+        for (Chapter ch : chapters) {
+            sb.append(ch.getName()).append("\n");
+        }
+        this.toc = new TableOfContents(sb.toString());
+    }
+
     public void print() {
         System.out.println("Book: " + title);
-        if (author != null) {
-            author.print();
-        }
-        if (toc != null) {
-            toc.print(); 
-        }
-        for (Chapter chapter : chapters) {
-            chapter.print();
-        }
+        if (author != null) author.print();
+        if (toc != null) toc.print();
+        for (Chapter chapter : chapters) chapter.print();
     }
 
-    // Getters si Setters
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public TableOfContents getTableOfContents() {
-        return toc;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public Author getAuthor() { return author; }
+    public void setAuthor(Author author) { this.author = author; }
+    public TableOfContents getTableOfContents() { return toc; }
 }
