@@ -1,31 +1,19 @@
 public class Main {
     public static void main(String[] args) throws Exception {
+        Book book = new Book("Programare Java", new Author("Alex Stan"));
 
-        Section cap1 = new Section("Capitolul 1");
+        Chapter ch1 = new Chapter("Capitol 1");
+        Section sec1 = new Section("Introducere");
+        sec1.addParagraph(new Paragraph("Paragraf 1"));
+        sec1.addParagraph(new Paragraph("Paragraf 2"));
+        ch1.addSection(sec1);
 
-        Paragraph p1 = new Paragraph("Paragraph 1");
-        cap1.add(p1);
+        SubChapter sub1 = new SubChapter("SubCapitol 1.1");
+        sub1.addParagraph(new Paragraph("Paragraf subcapitol"));
+        ch1.addSubChapter(sub1);
 
-        Paragraph p2 = new Paragraph("Paragraph 2");
-        cap1.add(p2);
-
-        Paragraph p3 = new Paragraph("Paragraph 3");
-        cap1.add(p3);
-
-        Paragraph p4 = new Paragraph("Paragraph 4");
-        cap1.add(p4);
-
-        System.out.println("Printing without Alignment");
-        System.out.println();
-        cap1.print();
-
-        p1.setAlignStrategy(new AlignCenter());
-        p2.setAlignStrategy(new AlignRight());
-        p3.setAlignStrategy(new AlignLeft());
-
-        System.out.println();
-        System.out.println("Printing with Alignment");
-        System.out.println();
-        cap1.print();
+        book.addChapter(ch1);
+        book.generateTOC();
+        book.print();
     }
 }

@@ -2,36 +2,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chapter {
-
-    //atribute
     private String name;
     private List<SubChapter> subChapters;
+    private List<Section> sections;
 
-    //constructor
     public Chapter(String name) {
         this.name = name;
         this.subChapters = new ArrayList<>();
+        this.sections = new ArrayList<>();
     }
 
-    //metoda pentru a adauga un subcapitol
     public void addSubChapter(SubChapter subChapter) {
         subChapters.add(subChapter);
     }
 
-    //metoda print
+    public void addSection(Section section) {
+        sections.add(section);
+    }
+
     public void print() {
         System.out.println("Chapter: " + name);
-        for (SubChapter subChapter : subChapters) {
-            subChapter.print();
-        }
+        for (SubChapter subChapter : subChapters) subChapter.print();
+        for (Section section : sections) section.print();
     }
 
-    // Getter si Setter
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }
